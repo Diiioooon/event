@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block body %}
+<h2>Edit Participant</h2>
+<form method="post">
+ <label>Participant ID</label><input name="partID" value="{{ p[0] }}" readonly>
+ <label>Event</label>
+ <select name="evCode">
+  {% for e in evs %}
+  <option value="{{ e[0] }}" {% if e[0] == p[1] %}selected{% endif %}>{{ e[0] }} - {{ e[1] }}</option>
+  {% endfor %}
+ </select>
+ <label>First Name</label><input name="partFName" value="{{ p[2] }}" required>
+ <label>Last Name</label><input name="partLName" value="{{ p[3] }}" required>
+ <label>Discount Rate</label><input type="number" step="0.01" name="partDRate" value="{{ p[4] }}" required>
+ <p><button>Save</button> <a href="/participants/update">Cancel</a></p>
+</form>
+{% endblock %}

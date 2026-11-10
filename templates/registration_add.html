@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block body %}
+<h2>Register a Participant</h2>
+<p class="err">{{ error }}</p>
+<form method="post">
+ <label>Participant</label>
+ <select name="partID">
+  {% for p in parts %}
+  <option value="{{ p[0] }}">{{ p[0] }} - {{ p[1] }}, {{ p[2] }} | {{ p[3] }} | Fee {{ p[4] }} - Discount {{ p[5] }}</option>
+  {% endfor %}
+ </select>
+ <label>Registration Date</label><input type="date" name="regDate" value="{{ today }}" required>
+ <label>Payment Mode</label>
+ <select name="regPMode">
+  <option value="Cash">Cash</option>
+  <option value="Card">Card</option>
+ </select>
+ <p>Fee to pay = Event Fee - Discount (computed when saved)</p>
+ <p><button>Save</button> <a href="/registration">Cancel</a></p>
+</form>
+{% endblock %}

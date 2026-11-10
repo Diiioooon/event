@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block body %}
+<h2>Events Registration Monitoring</h2>
+<form method="get">
+ Event's Name:
+ <select name="ev_code">
+  {% for e in evs %}
+  <option value="{{ e[0] }}" {% if ev_code == e[0]|string %}selected{% endif %}>{{ e[1] }}</option>
+  {% endfor %}
+ </select>
+ <button>Filter</button>
+</form>
+<a href="/">Back to Menu</a>
+{% if event %}
+<h3>Event's Name: {{ event[1] }}</h3>
+<table>
+<tr><th>Event's Name</th><th>Participant's Full Name</th><th>Registration Date</th><th>Registration Fee Paid</th></tr>
+{% for r in records %}
+<tr><td>{{ event[1] }}</td><td>{{ r[0] }}</td><td>{{ r[1] }}</td><td>{{ '%.2f'|format(r[2]) }}</td></tr>
+{% endfor %}
+</table>
+<p>Number of Records: {{ count }}</p>
+<p>Total Registration Fees Paid: {{ '%.2f'|format(total_paid) }}</p>
+<p>Total Amount of Discounts: {{ '%.2f'|format(discounts) }}</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block body %}
+<h2>Registration Records (Latest to Oldest)</h2>
+<a href="/registration/add">Register a Participant</a> | <a href="/">Back to Menu</a>
+<table>
+<tr><th>Reg. Code</th><th>Participant</th><th>Event</th><th>Reg. Date</th><th>Fee Paid</th><th>Payment Mode</th></tr>
+{% for r in rows %}
+<tr><td>{{ r[0] }}</td><td>{{ r[2] }} {{ r[3] }}</td><td>{{ r[4] }}</td><td>{{ r[5] }}</td><td>{{ '%.2f'|format(r[6]) }}</td><td>{{ r[7] }}</td></tr>
+{% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block body %}
+<h2>View Participants</h2>
+<a href="/participants/add">Add a Participant</a> | <a href="/">Back to Menu</a>
+<table>
+<tr><th>ID</th><th>Event Code</th><th>Last Name</th><th>First Name</th><th>Discount</th></tr>
+{% for r in rows %}
+<tr><td>{{ r[0] }}</td><td>{{ r[1] }}</td><td>{{ r[3] }}</td><td>{{ r[2] }}</td><td>{{ '%.2f'|format(r[4]) }}</td></tr>
+{% endfor %}
+</table>
+{% endblock %}

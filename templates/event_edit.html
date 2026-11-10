@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block body %}
+<h2>Edit Event</h2>
+<form method="post">
+ <label>Event Code</label><input name="evCode" value="{{ e[0] }}" readonly>
+ <label>Event Name</label><input name="evName" value="{{ e[1] }}" required>
+ <label>Event Date</label><input type="date" name="evDate" value="{{ e[2] }}" required>
+ <label>Venue</label><input name="evVenue" value="{{ e[3] }}" required>
+ <label>Registration Fee</label><input type="number" step="0.01" name="evRFee" value="{{ e[4] }}" required>
+ <p><button>Save</button> <a href="/events/update">Cancel</a></p>
+</form>
+{% endblock %}

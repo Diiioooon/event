@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block body %}
+<h2>Add Participant</h2>
+<p class="err">{{ error }}</p>
+<form method="post">
+ <label>Participant ID</label><input type="number" name="partID" required>
+ <label>Event</label>
+ <select name="evCode">
+  {% for e in evs %}
+  <option value="{{ e[0] }}">{{ e[0] }} - {{ e[1] }}</option>
+  {% endfor %}
+ </select>
+ <label>First Name</label><input name="partFName" required>
+ <label>Last Name</label><input name="partLName" required>
+ <label>Discount Rate</label><input type="number" step="0.01" name="partDRate" value="0" required>
+ <p><button>Save</button> <a href="/participants">Cancel</a></p>
+</form>
+{% endblock %}

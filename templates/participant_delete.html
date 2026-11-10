@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block body %}
+<h2>Search - Delete a Participant</h2>
+<form method="get">
+ Search (ID or name): <input name="q" value="{{ q }}"> <button>Search</button>
+</form>
+<a href="/">Back to Menu</a>
+<p class="err">{{ error }}</p>
+<table>
+<tr><th>ID</th><th>Event Code</th><th>Last Name</th><th>First Name</th><th>Discount</th><th>Action</th></tr>
+{% for r in rows %}
+<tr><td>{{ r[0] }}</td><td>{{ r[1] }}</td><td>{{ r[3] }}</td><td>{{ r[2] }}</td><td>{{ '%.2f'|format(r[4]) }}</td>
+ <td><a href="/participants/remove/{{ r[0] }}" onclick="return confirm('Delete this participant?')">Delete</a></td></tr>
+{% endfor %}
+</table>
+{% endblock %}
